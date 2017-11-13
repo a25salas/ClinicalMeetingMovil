@@ -1,0 +1,27 @@
+
+<form name="frm_login" ng-submit="submitForm(frm_login.$valid)">
+    <div class="jumbotron">
+      <div class="row">
+          <div class="col-sm-6 col-md-4 col-md-offset-4">
+              <h2 class="text-center login-title">{{title}}</h2>
+              <div class="account-wall">
+                  <form class="form-signin">
+                  <input type="text" class="form-control" id="user" name="user" ng-model="user.username" required focus placeholder="Username" >
+                  <br></br>
+                  <input  type="password" class="form-control" id="password" name="password" ng-model="user.password" required focus encrypt placeholder="Password" >
+                    <br></br>
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">
+                      Sign in</button>
+                  <label class="checkbox pull-left">
+                      <input type="checkbox" value="remember-me">
+                      Remember me
+                  </label>
+                  </form>
+    
+              </div>
+          </div>
+         
+      </div>
+      
+  </div>
+  
