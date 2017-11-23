@@ -1,0 +1,59 @@
+<div ui-content-for="title">
+    <span>Add event</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-header alert alert-success">
+        Fill the spaces
+    </div>
+    <div class="scrollable-content section">
+        <div class="container-fluid">
+            <div class="form-group has-success has-feedback">
+                <label for="name">title:</label>
+                <input type="text" class="form-control" ng-model="current.title" />
+            </div>
+            <div class="form-group has-success has-feedback">
+                <label for="name">description:</label>
+                <input type="text" class="form-control" ng-model="current.description" />
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label for="name">className:</label>
+                <input type="text" class="form-control" ng-model="current.className" />
+            </div>
+
+            
+
+            <div class="form-group has-success has-feedback">
+                <label for="name">start:</label>
+                <input type="datetime-local"  class="form-control" ng-model="current.start" />
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label for="name">end:</label>
+                <input type="datetime-local" class="form-control" ng-model="current.end" />
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label for="name">icon2:</label>
+                <input type="text" class="form-control" ng-model="current.icon" />
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label for="name">allDay 1 0:</label>
+                <input type="text" class="form-control" ng-model="current.allDay" />
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success" ng-show="state=='update'" ng-click="updateEvent()">Update</button>
+            </div>
+            <div class="form-group"></div>
+            <button class="btn btn-success" ng-show="state=='add'" ng-click="addEvent()">Agregar</button>
+        </div>
+    </div>
+
+    <div ui-content-for="modals">
+        <div ng-include="'modal1.html'"></div>
+        <div ng-include="'modal2.html'"></div>
+    </div>
+</div>

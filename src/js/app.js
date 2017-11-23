@@ -3,7 +3,17 @@ angular.module('WeatherApp', [
   'mobile-angular-ui',
   'WeatherApp.controllers.Main',
   'WeatherApp.controllers.Login',
-  'mobile-angular-ui.core.sharedState'
+  'WeatherApp.controllers.EventCustomer',
+  'WeatherApp.controllers.EventOwner',
+  'WeatherApp.controllers.Qr',
+  'WeatherApp.controllers.MyUser',
+  'WeatherApp.controllers.MyUserOwner',
+  'WeatherApp.services.Login',
+  'WeatherApp.services.Event',
+  'WeatherApp.services.Customer',
+  'WeatherApp.services.Owner',
+  'mobile-angular-ui.core.sharedState',
+  'mobile-angular-ui.gestures'
 ])
 .run(function ($rootScope) {
   $rootScope.apiUrl = "http://192.168.0.15:3100/"; 
@@ -15,62 +25,75 @@ angular.module('WeatherApp', [
   $routeProvider.when('/', {templateUrl:'home.html',  reloadOnSearch: false});
   $routeProvider.when('/login', {templateUrl: 'login.html', reloadOnSearch: false, controller: 'LoginCtrl',
   controllerAs: 'login'});
-})
-.service("LoginService",
-function( $http, $q, $rootScope) {
-   
-    function authenticate( user ) {
-        var request = $http({
-            method: "POST",
-            url: $rootScope.apiUrl+"login/",
-            data: {
-                username: user.username,
-                password: user.password
-            }
-        
-        });  
-        return( request.then( handleSuccess, handleError ) );
-    }
+  $routeProvider.when('/event', {templateUrl: 'event.html', reloadOnSearch: false, controller: 'EventOwnerCtrl',
+  controllerAs: 'event'});
+  $routeProvider.when('/addEvent', {templateUrl: 'addEvent.html', reloadOnSearch: false, controller: 'EventOwnerCtrl',
+  controllerAs: 'event',reload: false});
+  $routeProvider.when('/registerEvent', {templateUrl: 'registerEvent.html', reloadOnSearch: false, controller: 'EventCustomerCtrl',
+  controllerAs: 'event',reload: false});
+  $routeProvider.when('/scanQr', {templateUrl: 'qr.html', reloadOnSearch: false,controller: 'QrCtrl',
+  controllerAs: 'qr',reload: false});
+  $routeProvider.when('/myUser', {templateUrl: 'myUser.html', reloadOnSearch: false,controller: 'MyUserCtrl',
+  controllerAs: 'myUser',reload: false});
+  $routeProvider.when('/myUserOwner', {templateUrl: 'myUserOwner.html', reloadOnSearch: false,controller: 'MyUserOwnerCtrl',
+  controllerAs: 'myUserOwner',reload: false});
+}).directive('dragToDismiss', function($drag, $parse, $timeout) {
+  return {
+    restrict: 'A',
+    compile: function(elem, attrs) {
+      var dismissFn = $parse(attrs.dragToDismiss);
+      return function(scope, elem) {
+        var dismiss = false;
 
-      function logout( user ) {
-        var request = $http({
-            method: "POST",
-            url: $rootScope.apiUrl+"logout/",
-            data: {
-                name: $rootScope.username
+        $drag.bind(elem, {
+          transform: $drag.TRANSLATE_RIGHT,
+          move: function(drag) {
+            if (drag.distanceX >= drag.rect.width / 4) {
+              dismiss = true;
+              elem.addClass('dismiss');
+            } else {
+              dismiss = false;
+              elem.removeClass('dismiss');
             }
-        
-        });  
-        return( request.then( handleSuccess, handleError ) );
+          },
+          cancel: function() {
+            elem.removeClass('dismiss');
+          },
+          end: function(drag) {
+            if (dismiss) {
+              elem.addClass('dismitted');
+              $timeout(function() {
+                scope.$apply(function() {
+                  dismissFn(scope);
+                });
+              }, 300);
+            } else {
+              drag.reset();
+            }
+          }
+        });
+      };
     }
-
-    // ---
-    // PRIVATE METHODS.
-    // ---
-    // I transform the error response, unwrapping the application dta from
-    // the API response payload.
-    function handleError( response ) {
-        // The API response from the server should be returned in a
-        // nomralized format. However, if the request was not handled by the
-        // server (or what not handles properly - ex. server error), then we
-        // may have to normalize it on our end, as best we can.
-        if (
-            ! angular.isObject( response.data ) ||
-            ! response.data.message
-            ) {
-            return( $q.reject( "An unknown error occurred." ) );
+  };
+}).directive('dragMe', ['$drag', function($drag) {
+  return {
+    controller: function($scope, $element) {
+      $drag.bind($element,
+        {
+          //
+          // Here you can see how to limit movement
+          // to an element
+          //
+          transform: $drag.TRANSLATE_INSIDE($element.parent()),
+          end: function(drag) {
+            // go back to initial position
+            drag.reset();
+          }
+        },
+        { // release touch when movement is outside bounduaries
+          sensitiveArea: $element.parent()
         }
-        // Otherwise, use expected error message.
-        return( $q.reject( response.data.message ) );
+      );
     }
-    // I transform the successful response, unwrapping the application data
-    // from the API response payload.
-    function handleSuccess( response ) {
-        return( response.data );
-    }
-     // Return public API.
-    return({
-        authenticate: authenticate,
-        logout:logout
-    });
-}) ;
+  };
+}]);

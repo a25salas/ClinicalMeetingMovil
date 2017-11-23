@@ -1,0 +1,102 @@
+
+     <div ui-content-for="title">
+        <span>{{title}}</span>
+      </div>
+      <div class="scrollable">
+        <div class="scrollable-header alert alert-info">
+          Drag right to update event!
+        </div>
+      <div class="scrollable-content">
+        <div class="container-fluid">
+          <div class="notices-container">
+            <div ng-repeat="x in events"
+              drag-to-dismiss="setCurrent(x)"
+              class="section section-break">
+              <i class="fa fa-pencil "></i> {{x.description}} 
+              <i class="fa fa-user pull-right"></i> <bold class="pull-right" >{{x.creator.user.username}} </bold>
+            </div>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </div>
+
+    <div class="scrollable" ng-show="state=='update'">
+        <div class="scrollable-content section">
+                         <legend>Fill the spaces</legend>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group" ng-show="state=='update'">
+                                         <label for="ownerId">id:</label>
+                                         <span class="label label-info"> {{current._id}}</span>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label for="name">title:</label>
+                                         <input type="text" class="form-control" ng-model="current.title" />
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label for="name">description:</label>
+                                         <input type="text" class="form-control" ng-model="current.description" />
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label for="name">className:</label>
+                                         <input type="text" class="form-control" ng-model="current.className" />
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label for="name">start:</label>
+                                         <input type="text" class="form-control" ng-model="current.start" />
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label for="name">end:</label>
+                                         <input type="text" class="form-control" ng-model="current.end" />
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label for="name">icon2:</label>
+                                         <input type="text" class="form-control" ng-model="current.icon" />
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label for="name">allDay 1 0:</label>
+                                         <input type="text" class="form-control" ng-model="current.allDay" />
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <button  class="btn btn-success"   ng-show= "state=='update'"   ng-click="updateEvent()">Update</button>
+                             </div>
+                             <div class="form-group">
+                             <button  class="btn btn-danger"  ng-show= "state=='update'" ng-click="removeEvent()">Borrar</button>
+                             </div>
+                             <div class="form-group">
+                                 <button  class="btn btn-warning"  ng-show= "state=='update'" ng-click="state='add'">Atras</button>
+                             </div>
+                         </div>
+        
+      

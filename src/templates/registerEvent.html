@@ -1,0 +1,28 @@
+
+     <div ui-content-for="title">
+        <span>{{title}}</span>
+      </div>
+      <div class="scrollable">
+        <div class="scrollable-header alert alert-info">
+          Drag right to register event!
+        </div>
+      <div class="scrollable-content">
+        <div class="container-fluid">
+          <div class="notices-container">
+            <div ng-repeat="x in events"
+              drag-to-dismiss="registerCustomer(x)"
+              class="section section-break">
+              <i class="fa fa-pencil "></i> {{x.description}} 
+              <i class="fa fa-user pull-right"></i> <bold class="pull-right" >{{x.creator.user.username}} </bold>
+            </div>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </div>
+    <div ui-content-for="modals">
+        <div ng-include="'modal1.html'"></div>
+        <div ng-include="'modal2.html'"></div>
+      </div>   
+
+      

@@ -9,11 +9,12 @@
  */
 
 angular.module('WeatherApp.controllers.Login',[])
-  .controller('LoginCtrl', function ($scope, LoginService, $location,$rootScope) {
+  .controller('LoginCtrl', function ($scope, LoginService, $location,$rootScope,SharedState) {
 
     // variables
     $scope.title = "Clinical Meeting";
     $scope.user = { username: "andres", password: "andres" };
+    SharedState.initialize($scope, 'modal2');
 
     // methods
 
@@ -24,9 +25,10 @@ angular.module('WeatherApp.controllers.Login',[])
     };
 
     $scope.signIn =  function ()  {
-    console.log("entre");
+        SharedState.turnOn('modal2');
       LoginService.authenticate($scope.user).then(
         function (response){
+            SharedState.turnOff('modal2');
           if(response.type=="error"){
             alert(response.message);
           }
@@ -36,6 +38,7 @@ angular.module('WeatherApp.controllers.Login',[])
             $rootScope.token= response.token;
              $rootScope.username= response.username;
              $rootScope._id= response._id;
+             $rootScope.role= response.role;
              $location.path('/')
           }
 

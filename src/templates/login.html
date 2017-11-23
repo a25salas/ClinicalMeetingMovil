@@ -13,14 +13,17 @@
                   <button class="btn btn-lg btn-primary btn-block" type="submit">
                       Sign in</button>
                   <label class="checkbox pull-left">
-                      <input type="checkbox" value="remember-me">
+                        <ui-switch ng-model="rememberMe" class="ng-pristine ng-untouched ng-valid ng-isolate-scope switch switch-transition-enabled ng-not-empty"><div class="switch-handle"></div></ui-switch>
                       Remember me
                   </label>
                   </form>
     
               </div>
           </div>
-         
+          <div ui-content-for="modals">
+            <div ng-include="'modal1.html'"></div>
+            <div ng-include="'modal2.html'"></div>
+          </div>
       </div>
       
   </div>
