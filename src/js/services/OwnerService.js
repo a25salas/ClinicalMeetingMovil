@@ -5,12 +5,87 @@ function ($http, $q, $rootScope) {
     // ---
     // PUBLIC METHODS.
     // ---
-    function getByUserId(company_user_id) {
+
+    function addOwner(current) {
+        console.log(current);
+        var request = $http({
+            method: "POST",
+            url: $rootScope.apiUrl + "owner/create",
+            data: {
+                user: current.user
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function updateOwner(current) {
+          console.log(current)
+        var request = $http({
+          
+            method: "POST",
+            url: $rootScope.apiUrl + "owner/update",
+            data: {
+                qrCode: current.qrCode,
+                ownerId: current.ownerId,
+                user: current.user
+            }
+        });
+        return (request.then(handleSuccess, handleError));
+    }
+    // I get all of the friends in the remote collection.
+    function getOwners() {
+        var request = $http({
+            method: "GET",
+            url: $rootScope.apiUrl + "owner/owners",
+        });
+
+        return (request.then(handleSuccess, handleError));
+
+    }
+    // I remove the friend with the given ID from the remote collection.
+    function removeOwner(current) {
+        var request = $http({
+            method: "POST",
+            url: $rootScope.apiUrl + "owner/delete",
+            data: {
+                _id: current._id
+            }
+        });
+        return (request.then(handleSuccess, handleError));
+    }
+
+ 
+    function getByUserId() {
         var request = $http({
             method: "POST",
             url: $rootScope.apiUrl + "owner/getByUserId",
             data: {
-                user: company_user_id
+                user: $rootScope._id
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function getEventsById() {
+        var request = $http({
+            method: "POST",
+            url: $rootScope.apiUrl + "owner/getEventsById",
+            data: {
+                user: $rootScope._id
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function getCustomersById() {
+        var request = $http({
+            method: "POST",
+            url: $rootScope.apiUrl + "owner/getCustomersById",
+            data: {
+                user: $rootScope._id
             }
         });
 
@@ -44,6 +119,12 @@ function ($http, $q, $rootScope) {
     }
     // Return public API.
     return ({
-        getByUserId: getByUserId
+        addOwner: addOwner,
+        updateOwner: updateOwner,
+        getOwners: getOwners,
+        removeOwner: removeOwner,
+        getByUserId: getByUserId,
+        getCustomersById:getCustomersById,
+        getEventsById:getEventsById
     });
 });

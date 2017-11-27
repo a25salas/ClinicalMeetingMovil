@@ -12,7 +12,7 @@
             <div ng-repeat="x in events"
               drag-to-dismiss="setCurrent(x)"
               class="section section-break">
-              <i class="fa fa-pencil "></i> {{x.description}} 
+              <i class="fa fa-pencil "></i> {{x.description + " "}}  <span class="label label-success">{{x.quantityRegistered+"/"+x.quantity}}</span> 
               <i class="fa fa-user pull-right"></i> <bold class="pull-right" >{{x.creator.user.username}} </bold>
             </div>
           </div>
@@ -56,6 +56,11 @@
                                      </div>
                                  </div>
                              </div>
+                             <div class="form-group has-success has-feedback">
+                                <label for="name">quantity:</label>
+                                <input type="number"  class="form-control" ng-model="current.quantity" />
+                            </div>
+                
                              <div class="row">
                                  <div class="col-md-6">
                                      <div class="form-group">

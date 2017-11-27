@@ -1,0 +1,90 @@
+<div ui-content-for="title">
+    <span>Add Customer</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-header alert alert-success">
+        Fill the spaces
+    </div>
+    <div class="scrollable-content section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-show="state=='update'">
+                        <label for="ownerId">customerId:</label>
+                        <span class="label label-info"> {{current.customerId}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">name:</label>
+                        <input type="text" class="form-control" ng-model="current.user.name" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">username:</label>
+                        <input type="text" class="form-control" ng-model="current.user.username" />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="state=='add'"> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Password:</label>
+                        <input type="text" class="form-control" ng-model="current.user.password" />
+                    </div>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Registered Companies:</label>
+                        <div class="list-group" ng-repeat="owner in current.registeredCompanies">
+                            <strong>---------------- </strong><br>
+                              <strong>Company Id: </strong> {{ owner._id }}<br>
+                              <strong>Company name: </strong> {{ owner.user.name }}<br>
+                              <button ng-click="desRegisterOwner(owner._id);">remove</button><br>
+                              <strong>---------------- </strong> <br>
+                            
+                          </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name"> Click to Register Company:</label>
+                        <select name="repeatSelect" id="repeatSelect" ng-model="data.selectedOwner" ng-change="registerOwner()">
+                            <option ng-repeat="x in owners" ng-value="x">{{x.user.username}}</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Weight:</label>
+                        <input type="text" class="form-control" ng-model="current.weight" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success" ng-show="state=='update'" ng-click="updateCustomer()">Update</button>
+            </div>
+            <div class="form-group"></div>
+            <button class="btn btn-success" ng-show="state=='add'" ng-click="addCustomer()">Agregar</button>
+        </div>
+    </div>
+
+    <div ui-content-for="modals">
+        <div ng-include="'modal1.html'"></div>
+        <div ng-include="'modal2.html'"></div>
+    </div>
+</div>

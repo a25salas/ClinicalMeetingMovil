@@ -31,17 +31,28 @@ angular.module('WeatherApp.controllers.MyUserOwner', [])
         })
     }
 
-    $scope.getEventsFromOwner =   function () {
-     /*   CustomerService.getEventsFromCustomer()
+    $scope.getCustomersById =   function () {
+        OwnerService.getCustomersById()
           .then(
-          function (myEvents) {
-            $scope.events = myEvents.res;
-          });*/
+          function (customers) {
+            $scope.customers = customers.res;
+          });
+      };
+
+      $scope.getEventsById =   function () {
+        OwnerService.getEventsById()
+          .then(
+          function (events) {
+            console.log(events.res);
+            $scope.events = events.res;
+          });
       };
 
 
 
-        $scope.getUserCreedentials();
 
+        $scope.getUserCreedentials();
+        $scope.getCustomersById();
+        $scope.getEventsById();
 
     });

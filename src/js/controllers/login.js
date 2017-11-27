@@ -24,6 +24,12 @@ angular.module('WeatherApp.controllers.Login',[])
       }
     };
 
+    $scope.goRegisterCustomer= function (){
+      $location.path('/addCustomer')
+
+    }
+
+
     $scope.signIn =  function ()  {
         SharedState.turnOn('modal2');
       LoginService.authenticate($scope.user).then(

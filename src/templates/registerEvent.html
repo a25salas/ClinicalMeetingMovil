@@ -12,7 +12,7 @@
             <div ng-repeat="x in events"
               drag-to-dismiss="registerCustomer(x)"
               class="section section-break">
-              <i class="fa fa-pencil "></i> {{x.description}} 
+              <i class="fa fa-pencil "></i> {{x.description + " "}}  <span class="label label-success">{{x.quantityRegistered+"/"+x.quantity}}</span> 
               <i class="fa fa-user pull-right"></i> <bold class="pull-right" >{{x.creator.user.username}} </bold>
             </div>
           </div>

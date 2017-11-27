@@ -16,6 +16,7 @@ function ($http, $q, $rootScope) {
                 description: current.description,
                 className: current.className,
                 creator: $rootScope._id,
+                quantity: current.quantity,
                 icon: current.icon,
                 start: current.start,
                 end: current.end,

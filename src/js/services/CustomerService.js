@@ -6,6 +6,59 @@ function ($http, $q, $rootScope) {
     // PUBLIC METHODS.
     // ---
     // I add a friend with the given name to the remote collection.
+    function addCustomer(current) {
+        console.log(current);
+        var request = $http({
+            method: "POST",
+            url: $rootScope.apiUrl + "customer/create",
+            data: {
+                user: current.user,
+                weight: current.weight,
+                registeredCompanies: current.registeredCompanies.map(function(e){ e._id})  // devuelve solo los ID
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function updateCustomer(current) {
+          console.log(current)
+        var request = $http({
+         
+            method: "POST",
+            url: $rootScope.apiUrl + "customer/update",
+            data: {
+                customerId: current.customerId,
+                user: current.user,
+                weight: current.weight,
+                registeredCompanies: current.registeredCompanies.map(function(e){ e._id})  // devuelve solo los ID
+            }
+        });
+        return (request.then(handleSuccess, handleError));
+    }
+    // I get all of the friends in the remote collection.
+    function getCustomers() {
+        var request = $http({
+            method: "GET",
+            url: $rootScope.apiUrl + "customer/customers",
+        });
+
+        return (request.then(handleSuccess, handleError));
+
+    }
+    // I remove the friend with the given ID from the remote collection.
+    function removeCustomer(current) {
+        var request = $http({
+            method: "POST",
+            url: $rootScope.apiUrl + "customer/delete",
+            data: {
+                _id: current._id
+            }
+        });
+        return (request.then(handleSuccess, handleError));
+    }
+
+
     function registerCompany(company_user_id) {
         console.log($rootScope._id);
         var request = $http({
@@ -69,6 +122,10 @@ function ($http, $q, $rootScope) {
     }
     // Return public API.
     return ({
+        addCustomer: addCustomer,
+        updateCustomer: updateCustomer,
+        getCustomers: getCustomers,
+        removeCustomer: removeCustomer,
         registerCompany: registerCompany,
         getByUserId:getByUserId,
         getEventsFromCustomer:getEventsFromCustomer

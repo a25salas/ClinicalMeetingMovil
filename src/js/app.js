@@ -3,6 +3,7 @@ angular.module('WeatherApp', [
   'mobile-angular-ui',
   'WeatherApp.controllers.Main',
   'WeatherApp.controllers.Login',
+  'WeatherApp.controllers.Customer',
   'WeatherApp.controllers.EventCustomer',
   'WeatherApp.controllers.EventOwner',
   'WeatherApp.controllers.Qr',
@@ -17,6 +18,7 @@ angular.module('WeatherApp', [
 ])
 .run(function ($rootScope) {
   $rootScope.apiUrl = "http://localhost:3100/"; 
+  // $rootScope.apiUrl = "http://13.58.32.204:3100/"; 
   $rootScope.token = "";
   $rootScope.username = "N/A";
   $rootScope.role = -1;
@@ -28,6 +30,8 @@ angular.module('WeatherApp', [
   $routeProvider.when('/event', {templateUrl: 'event.html', reloadOnSearch: false, controller: 'EventOwnerCtrl',
   controllerAs: 'event'});
   $routeProvider.when('/addEvent', {templateUrl: 'addEvent.html', reloadOnSearch: false, controller: 'EventOwnerCtrl',
+  controllerAs: 'event',reload: false});
+  $routeProvider.when('/addCustomer', {templateUrl: 'addCustomer.html', reloadOnSearch: false, controller: 'CustomerCtrl',
   controllerAs: 'event',reload: false});
   $routeProvider.when('/registerEvent', {templateUrl: 'registerEvent.html', reloadOnSearch: false, controller: 'EventCustomerCtrl',
   controllerAs: 'event',reload: false});
