@@ -17,8 +17,8 @@ angular.module('WeatherApp', [
   'mobile-angular-ui.gestures'
 ])
 .run(function ($rootScope) {
-  $rootScope.apiUrl = "http://localhost:3100/"; 
-  // $rootScope.apiUrl = "http://13.58.32.204:3100/"; 
+  //$rootScope.apiUrl = "http://localhost:3100/"; 
+   $rootScope.apiUrl = "http://13.58.32.204:3100/"; 
   $rootScope.token = "";
   $rootScope.username = "N/A";
   $rootScope.role = -1;
