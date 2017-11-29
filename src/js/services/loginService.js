@@ -3,16 +3,19 @@ angular.module('WeatherApp.services.Login', [])
 function( $http, $q, $rootScope) {
    
     function authenticate( user ) {
+     
         var request = $http({
             method: "POST",
             url: $rootScope.apiUrl+"login/",
             data: {
                 username: user.username,
                 password: user.password
-            }
+            },
+            timeout : 5000, 
         
         });  
         return( request.then( handleSuccess, handleError ) );
+    
     }
 
       function logout( user ) {

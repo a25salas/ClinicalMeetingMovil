@@ -1,8 +1,11 @@
 
 <div class="scrollable">
+
   <h1 class="scrollable-header app-name">{{title}}</h1>
-  <img src="images/persona.png">
+  <img src="images/icons/64.png">
+  <div class="btn-group pull-center">
   <h1 class="app-name"> {{getUser()}} </h1>  
+  </div>
  
   <div class="scrollable-content">
     <div class="list-group" ui-turn-off='uiSidebarLeft'>
@@ -13,6 +16,7 @@
       <a class="list-group-item" href="#!/event" ng-show="getRole() =='owner'">Update Events <i class="fa fa-chevron-right pull-right"></i></a>
       <a class="list-group-item" href="#!/addEvent" ng-show="getRole() =='owner'">Add Event <i class="fa fa-chevron-right pull-right"></i></a>
       <a class="list-group-item" href="#!/addCustomer" ng-show="getRole() =='owner'">Add Customer <i class="fa fa-chevron-right pull-right"></i></a>
+      <a class="list-group-item" href="#!/addOwner" ng-show="getRole() =='owner'">Add Owner <i class="fa fa-chevron-right pull-right"></i></a>
       <a class="list-group-item" href="#!/registerEvent" ng-show="getRole() =='customer'">Register Event <i class="fa fa-chevron-right pull-right"></i></a>
       <a class="list-group-item" href="#!/scanQr" ng-show="getRole() =='customer'">Scan Company <i class="fa fa-chevron-right pull-right"></i></a>
     </div> 

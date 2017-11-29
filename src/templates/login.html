@@ -1,9 +1,15 @@
 
 <form name="frm_login" ng-submit="submitForm(frm_login.$valid)">
-    <div class="jumbotron">
+    <div class=" jumbotron">
       <div class="row">
-          <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="text-center login-title">
+            <img src="images/icons/124.png">
+            </div>
+
+          <div class="col-sm-6 col-md-4 col-md-offset-4 ">
+        
               <h2 class="text-center login-title">{{title}}</h2>
+           
               <div class="account-wall">
                   <form class="form-signin">
                   <input type="text" class="form-control" id="user" name="user" ng-model="user.username" required focus placeholder="Username" >
@@ -15,7 +21,6 @@
                       Sign in</button>
                   <label class="checkbox pull-left">
                         <ui-switch ng-model="rememberMe" class="ng-pristine ng-untouched ng-valid ng-isolate-scope switch switch-transition-enabled ng-not-empty"><div class="switch-handle"></div></ui-switch>
-                      Remember me
                   </label>
                   </form>
                   <a ng-click="goRegisterCustomer()">not a member?</a>

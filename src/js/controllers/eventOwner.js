@@ -1,5 +1,5 @@
 angular.module('WeatherApp.controllers.EventOwner',[])
-.controller('EventOwnerCtrl', function ($scope, $rootScope, EventService, $routeParams,  $location,SharedState) {
+.controller('EventOwnerCtrl', function ($scope, $rootScope, EventService, $routeParams,  $location,SharedState,OwnerService) {
   SharedState.initialize($scope, 'modal1');
     SharedState.initialize($scope, 'modal2');
     $scope.title ="Events";
@@ -17,7 +17,7 @@ angular.module('WeatherApp.controllers.EventOwner',[])
       if ($rootScope._id == null ){
         $location.path('/login');
       } else{
-      EventService.getEvents()
+      OwnerService.getEventsById()
         .then(
         function (events) {
           console.log(events);

@@ -4,6 +4,7 @@ angular.module('WeatherApp', [
   'WeatherApp.controllers.Main',
   'WeatherApp.controllers.Login',
   'WeatherApp.controllers.Customer',
+  'WeatherApp.controllers.Owner',
   'WeatherApp.controllers.EventCustomer',
   'WeatherApp.controllers.EventOwner',
   'WeatherApp.controllers.Qr',
@@ -33,6 +34,8 @@ angular.module('WeatherApp', [
   controllerAs: 'event',reload: false});
   $routeProvider.when('/addCustomer', {templateUrl: 'addCustomer.html', reloadOnSearch: false, controller: 'CustomerCtrl',
   controllerAs: 'event',reload: false});
+  $routeProvider.when('/addOwner', {templateUrl: 'addOwner.html', reloadOnSearch: false, controller: 'OwnerCtrl',
+  controllerAs: 'owner',reload: false});
   $routeProvider.when('/registerEvent', {templateUrl: 'registerEvent.html', reloadOnSearch: false, controller: 'EventCustomerCtrl',
   controllerAs: 'event',reload: false});
   $routeProvider.when('/scanQr', {templateUrl: 'qr.html', reloadOnSearch: false,controller: 'QrCtrl',

@@ -35,6 +35,7 @@ angular.module('WeatherApp.controllers.Main', [])
           return $rootScope.role;
       }
 
+     
 
      // $scope.getEventsFromCustomer();
 
