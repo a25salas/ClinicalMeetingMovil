@@ -19,6 +19,7 @@ angular.module('WeatherApp.controllers.Qr', [])
 
             cordova.plugins.barcodeScanner.scan(
                 function (result) {
+                   // alert(result.text);
 
                     OwnerService.getByUserId(result.text).then(function (res) {
                         if (res.type == "success") {

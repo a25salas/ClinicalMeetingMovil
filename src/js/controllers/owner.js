@@ -1,4 +1,4 @@
-angular.module('WeatherApp.controllers.Owner',[]).controller('OwnerCtrl', function ($scope, OwnerService) {
+angular.module('WeatherApp.controllers.Owner',[]).controller('OwnerCtrl', function ($scope, OwnerService,SharedState) {
     $scope.title = "Owners";
     $scope.owners = [];
     $scope.qrCode = "";

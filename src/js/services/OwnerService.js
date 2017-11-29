@@ -56,7 +56,18 @@ function ($http, $q, $rootScope) {
     }
 
  
-    function getByUserId() {
+    function getByUserId(e) {
+        if(e){
+        var request = $http({
+            method: "POST",
+            url: $rootScope.apiUrl + "owner/getByUserId",
+            data: {
+                user: e
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    } else{
         var request = $http({
             method: "POST",
             url: $rootScope.apiUrl + "owner/getByUserId",
@@ -66,6 +77,8 @@ function ($http, $q, $rootScope) {
         });
 
         return (request.then(handleSuccess, handleError));
+
+    }
     }
 
     function getEventsById() {
