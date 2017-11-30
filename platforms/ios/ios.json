@@ -55,6 +55,10 @@
                         {
                             "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -64,7 +68,7 @@
                     "NSCameraUsageDescription": [
                         {
                             "xml": "<string> </string>",
-                            "count": 2
+                            "count": 3
                         }
                     ],
                     "NSPhotoLibraryUsageDescription": [
@@ -135,6 +139,10 @@
         },
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.phonegap.clinicalMeeting"
         }
     },
     "dependent_plugins": {},
@@ -511,6 +519,14 @@
             "merges": [
                 "navigator.notification",
                 "navigator"
+            ]
+        },
+        {
+            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+            "pluginId": "phonegap-plugin-barcodescanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
             ]
         }
     ]

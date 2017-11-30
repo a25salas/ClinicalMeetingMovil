@@ -36,6 +36,9 @@
         },
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.phonegap.clinicalMeeting"
         }
     },
     "dependent_plugins": {
