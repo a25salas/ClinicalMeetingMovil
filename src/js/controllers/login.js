@@ -45,7 +45,7 @@ angular.module('WeatherApp.controllers.Login',[])
              $rootScope.username= response.username;
              $rootScope._id= response._id;
              $rootScope.role= response.role;
-             $location.path('/')
+             $location.path('/home')
           }
 
          
