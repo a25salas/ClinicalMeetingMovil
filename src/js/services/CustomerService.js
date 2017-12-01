@@ -15,10 +15,11 @@ function ($http, $q, $rootScope) {
                 user: current.user,
                 weight: current.weight,
                 registeredCompanies: current.registeredCompanies.map(function(e){ e._id})  // devuelve solo los ID
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
     function updateCustomer(current) {
@@ -32,9 +33,11 @@ function ($http, $q, $rootScope) {
                 user: current.user,
                 weight: current.weight,
                 registeredCompanies: current.registeredCompanies.map(function(e){ e._id})  // devuelve solo los ID
-            }
-        });
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));;
     }
     // I get all of the friends in the remote collection.
     function getCustomers() {
@@ -53,9 +56,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "customer/delete",
             data: {
                 _id: current._id
-            }
-        });
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
 
@@ -67,10 +72,11 @@ function ($http, $q, $rootScope) {
             data: {
                 company_user_id: company_user_id,
                 customer_id: $rootScope._id
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
     function getByUserId(company_user_id) {
@@ -79,10 +85,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "customer/getByUserId",
             data: {
                 user: $rootScope._id
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
     function getEventsFromCustomer(current) {
         var request = $http({
@@ -90,9 +97,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "customer/getEvents",   // se debe cambiar a customer
               data: {
                 user_id: $rootScope._id
-            }
-        });
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
 

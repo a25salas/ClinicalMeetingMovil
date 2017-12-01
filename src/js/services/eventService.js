@@ -21,10 +21,11 @@ function ($http, $q, $rootScope) {
                 start: current.start,
                 end: current.end,
                 allDay: current.allDay
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
     function updateEvent(current) {
@@ -43,19 +44,21 @@ function ($http, $q, $rootScope) {
                 start: current.start,
                 end: current.end,
                 allDay: current.allDay
-            }
-        });
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
     // I get all of the friends in the remote collection.
     function getEvents() {
         var request = $http({
             method: "GET",
             url: $rootScope.apiUrl + "event/events",
-        });
-
-        return (request.then(handleSuccess, handleError));
-
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
        // I get thw probable eevents.
@@ -65,10 +68,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "event/getProbableEvents",
             data: {
                 user_id: $rootScope._id,
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
 
     }
     // I remove the friend with the given ID from the remote collection.
@@ -78,9 +82,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "event/delete",
               data: {
                 _id: current._id,
-            }
-        });
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
         // I remove the friend with the given ID from the remote collection.
@@ -91,9 +97,11 @@ function ($http, $q, $rootScope) {
                   data: {
                     _id: current._id,
                     user_id: $rootScope._id
-                }
-            });
-            return (request.then(handleSuccess, handleError));
+                },
+                timeout : 3000, 
+                
+                });  
+                return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
         }
 
             // I remove the friend with the given ID from the remote collection.

@@ -13,10 +13,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "owner/create",
             data: {
                 user: current.user
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
     function updateOwner(current) {
@@ -29,18 +30,21 @@ function ($http, $q, $rootScope) {
                 qrCode: current.qrCode,
                 ownerId: current.ownerId,
                 user: current.user
-            }
-        });
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
     // I get all of the friends in the remote collection.
     function getOwners() {
         var request = $http({
             method: "GET",
             url: $rootScope.apiUrl + "owner/owners",
-        });
-
-        return (request.then(handleSuccess, handleError));
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
 
     }
     // I remove the friend with the given ID from the remote collection.
@@ -50,9 +54,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "owner/delete",
             data: {
                 _id: current._id
-            }
-        });
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
  
@@ -63,20 +69,22 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "owner/getByUserId",
             data: {
                 user: e
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     } else{
         var request = $http({
             method: "POST",
             url: $rootScope.apiUrl + "owner/getByUserId",
             data: {
                 user: $rootScope._id
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
 
     }
     }
@@ -87,10 +95,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "owner/getEventsById",
             data: {
                 user: $rootScope._id
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
     function getCustomersById() {
@@ -99,10 +108,11 @@ function ($http, $q, $rootScope) {
             url: $rootScope.apiUrl + "owner/getCustomersById",
             data: {
                 user: $rootScope._id
-            }
-        });
-
-        return (request.then(handleSuccess, handleError));
+            },
+            timeout : 3000, 
+            
+            });  
+            return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     }
 
 

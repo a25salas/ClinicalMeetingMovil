@@ -18,7 +18,7 @@ angular.module('WeatherApp', [
   'mobile-angular-ui.gestures'
 ])
 .run(function ($rootScope) {
- // $rootScope.apiUrl = "http://localhost:3100/"; 
+ //$rootScope.apiUrl = "http://localhost:3100/"; 
   //   $rootScope.apiUrl = "http://192.168.0.10:3100/"; 
    $rootScope.apiUrl = "http://13.58.32.204:3100/"; 
   $rootScope.token = "";
@@ -26,7 +26,7 @@ angular.module('WeatherApp', [
   $rootScope.role = -1;
 })
 .config(function($routeProvider) {
-  $routeProvider.when('/', {templateUrl:'home.html',  reloadOnSearch: false});
+  $routeProvider.when('/home', {templateUrl:'home.html',  reloadOnSearch: false});
   $routeProvider.when('/login', {templateUrl: 'login.html', reloadOnSearch: false, controller: 'LoginCtrl',
   controllerAs: 'login'});
   $routeProvider.when('/event', {templateUrl: 'event.html', reloadOnSearch: false, controller: 'EventOwnerCtrl',
@@ -45,6 +45,8 @@ angular.module('WeatherApp', [
   controllerAs: 'myUser',reload: false});
   $routeProvider.when('/myUserOwner', {templateUrl: 'myUserOwner.html', reloadOnSearch: false,controller: 'MyUserOwnerCtrl',
   controllerAs: 'myUserOwner',reload: false});
+  $routeProvider.otherwise({redirectTo: '/login'});
+
 }).directive('dragToDismiss', function($drag, $parse, $timeout) {
   return {
     restrict: 'A',
@@ -104,4 +106,23 @@ angular.module('WeatherApp', [
       );
     }
   };
-}]);
+}]).config(function ($httpProvider) {
+  $httpProvider.interceptors.push(function ($rootScope, $q) {
+      return {
+          request: function (config) {
+              config.timeout = 3000;
+              return config;
+          },
+          responseError: function (rejection) {
+              switch (rejection.status){
+                  case 408 :
+                      console.log('connection timed out');
+                      break;
+              }
+              return $q.reject(rejection);
+          }
+      }
+  })
+}).config(['$qProvider', function ($qProvider) {
+  $qProvider.errorOnUnhandledRejections(false);
+}]);;
