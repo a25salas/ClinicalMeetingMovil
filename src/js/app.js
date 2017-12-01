@@ -19,8 +19,8 @@ angular.module('WeatherApp', [
 ])
 .run(function ($rootScope) {
  //$rootScope.apiUrl = "http://localhost:3100/"; 
-  //   $rootScope.apiUrl = "http://192.168.0.10:3100/"; 
-   $rootScope.apiUrl = "http://13.58.32.204:3100/"; 
+    $rootScope.apiUrl = "http://192.168.0.10:3100/"; 
+ //  $rootScope.apiUrl = "https://13.58.32.204:3100/"; 
   $rootScope.token = "";
   $rootScope.username = "N/A";
   $rootScope.role = -1;
