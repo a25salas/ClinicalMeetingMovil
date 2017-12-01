@@ -9,7 +9,7 @@
     <feature name="BarcodeScanner">
         <param name="browser-package" value="BarcodeScanner" />
     </feature>
-    <name>clinicalMeeting</name>
+    <name>Clinical Meeting </name>
     <description>
         ClinicalMeeting is a event software
     </description>
@@ -17,13 +17,15 @@
         Moonwolf imaginations
     </author>
     <content src="index.html" />
+    <preference name="permissions" value="none" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
     <access origin="*" />
+    <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="14" />
 </widget>
