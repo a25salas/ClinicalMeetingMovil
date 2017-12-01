@@ -3,7 +3,7 @@ angular.module('WeatherApp.services.Login', [])
 function( $http, $q, $rootScope) {
    
     function authenticate( user ) {
-        alert($rootScope.apiUrl);
+       // alert($rootScope.apiUrl);
      
         var request = $http({
             method: "POST",
