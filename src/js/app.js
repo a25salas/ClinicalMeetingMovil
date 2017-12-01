@@ -19,14 +19,16 @@ angular.module('WeatherApp', [
 ])
 .run(function ($rootScope) {
  //$rootScope.apiUrl = "http://localhost:3100/"; 
-    $rootScope.apiUrl = "http://192.168.0.10:3100/"; 
- //  $rootScope.apiUrl = "https://13.58.32.204:3100/"; 
+   //$rootScope.apiUrl = "http://192.168.0.10:3100/"; 
+  $rootScope.apiUrl = "http://13.58.32.204:3100/"; 
   $rootScope.token = "";
   $rootScope.username = "N/A";
   $rootScope.role = -1;
 })
 .config(function($routeProvider) {
   $routeProvider.when('/home', {templateUrl:'home.html',  reloadOnSearch: false});
+  $routeProvider.when('/', {templateUrl: 'login.html', reloadOnSearch: false, controller: 'LoginCtrl',
+  controllerAs: 'login'});
   $routeProvider.when('/login', {templateUrl: 'login.html', reloadOnSearch: false, controller: 'LoginCtrl',
   controllerAs: 'login'});
   $routeProvider.when('/event', {templateUrl: 'event.html', reloadOnSearch: false, controller: 'EventOwnerCtrl',
@@ -45,7 +47,6 @@ angular.module('WeatherApp', [
   controllerAs: 'myUser',reload: false});
   $routeProvider.when('/myUserOwner', {templateUrl: 'myUserOwner.html', reloadOnSearch: false,controller: 'MyUserOwnerCtrl',
   controllerAs: 'myUserOwner',reload: false});
-  $routeProvider.otherwise({redirectTo: '/login'});
 
 }).directive('dragToDismiss', function($drag, $parse, $timeout) {
   return {
