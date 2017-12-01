@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.clinicalMeeting" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.phonegap.clinicalMeeting" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0"
+versionCode = "10" 
+        version     = "1.0.0">
+
     <name>Clinical Meeting </name>
     <description>
         ClinicalMeeting is a event software
@@ -25,7 +28,11 @@
     <plugin name="phonegap-plugin-barcodescanner" source="npm" version="7.0.0" >
      <param name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes." />
     </plugin>
-        <plugin name="cordova-plugin-camera" source="npm" spec="~2.4.1" />
+        <plugin name="cordova-plugin-camera" source="npm" spec="~2.4.1" /> 
+          <platform name="android" />
+    <plugin name="org.apache.cordova.camera" source="pgb" />
+  </platform>
+
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
