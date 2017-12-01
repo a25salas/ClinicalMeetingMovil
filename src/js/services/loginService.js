@@ -15,6 +15,7 @@ function( $http, $q, $rootScope) {
             timeout : 3000, 
         
         });  
+        alert(request);
         return( request.then( handleSuccess, handleError ).catch(function (e){ alert(e)}));
     
     }
